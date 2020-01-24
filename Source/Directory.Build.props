@@ -61,10 +61,12 @@
     <DefineConstants>$(DefineConstants);__ANDROID__</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition=" $(IsPackable) ">
+  <ItemGroup Condition=" $(IsPackable) And $(Configuration) == 'Release' ">
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 
-
+  <!-- Build from Xamarin.Forms Source -->
+  <Import Project="..\..\BuildFromSource.props"
+          Condition="Exists('..\..\BuildFromSource.props')" />
 
 </Project>
